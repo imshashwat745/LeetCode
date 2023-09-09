@@ -6,6 +6,7 @@ private:
         if(dp[t]!=-1)return dp[t];
         int ans=0;
         for(auto i:arr){
+            if(i>t)break;
             ans+=help(arr,t-i,dp);
         }
         return dp[t]=ans;
@@ -13,6 +14,7 @@ private:
 public:
     int combinationSum4(vector<int>& arr, int t) {
         vector<int> dp(t+1,-1);
+        sort(arr.begin(),arr.end());
         return help(arr,t,dp);
     }
 };
