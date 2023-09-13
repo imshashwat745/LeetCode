@@ -11,32 +11,14 @@
  */
 class Solution {
 private:
-    int findNum(string &curr){
-        reverse(curr.begin(),curr.end());
-        int ans=0;
-        for(int i=0;i<curr.size();++i){
-            if(curr[i]=='0') continue;
-            ans|=(1<<i);
-        }
-        reverse(curr.begin(),curr.end());
-        return ans;
-    }
-    int help(TreeNode* root,string &curr,int i){
+    int help(TreeNode* root,int curr){
         if(!root)return 0;
-        if(root->val==1)curr+='1';
-        else curr+='0';
-        if(!root->left&&!root->right){
-            int ans=findNum(curr);
-            curr.pop_back();
-            return ans;
-        }
-        int ans = help(root->left,curr,i+1)+help(root->right,curr,i+1);
-        curr.pop_back();
-        return ans;
+        curr = curr<<1 | root->val;
+        if(!root->left&&!root->right)return curr;
+        return help(root->left,curr)+help(root->right,curr);
     }
 public:
     int sumRootToLeaf(TreeNode* root) {
-        string curr="";
-        return help(root,curr,0);
+        return help(root,0);
     }
 };
