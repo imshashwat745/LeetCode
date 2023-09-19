@@ -1,14 +1,16 @@
 class Solution {
-    fun findDuplicate(nums: IntArray): Int {
-        var mp=HashMap<Int,Int>()
-        for(num in nums){
-            var c:Int=0
-            c=mp.getOrDefault(num,0)+1
-            mp.put(num,c)
+    fun findDuplicate(arr: IntArray): Int {
+        var slow=arr[0]
+        var fast=arr[arr[0]]
+        while(slow!=fast){
+            slow=arr[slow]
+            fast=arr[arr[fast]]
         }
-        for((k,v) in mp){
-            if(v>1)return k
+        slow=0
+        while(slow!=fast){
+            slow=arr[slow]
+            fast=arr[fast]
         }
-        return -1
+        return slow
     }
 }
