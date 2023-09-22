@@ -10,7 +10,7 @@ class Solution {
     fun smallestDivisor(nums: IntArray, threshold: Int): Int {
         var maxi=0
         for(num in nums)maxi=max(maxi,num)
-        var f=0
+        var f=1
         var l=maxi
         var ans=maxi
         while(f<=l){
