@@ -9,17 +9,20 @@ class Solution {
         var ans:String=""
         for(ch in s){
             val x=ch.toInt()-97
+            if(found[x]){
+                --mp[x]
+                continue
+            }
             // if(mp[x]==1){
             //     st.push(ch)
             //     found[x]=true
             //     continue
             // }
-            while(st.size>0&&st.peek()>ch&&mp[st.peek().toInt()-97]>=1&&
-            found[x]==false){
+            while(st.size>0&&st.peek()>ch&&mp[st.peek().toInt()-97]>=1){
                 found[st.peek().toInt()-97]=false
                 st.pop()
             }
-            if(found[x]==false)st.push(ch)
+            st.push(ch)
             --mp[x]
             found[x]=true
         }
