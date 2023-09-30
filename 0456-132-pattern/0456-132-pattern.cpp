@@ -18,7 +18,7 @@ public:
             auto it=mp.upper_bound(mini);
             if(it!=mp.end()){
                 int ele=it->first;
-                cout<<mini<<" "<<arr[j]<<" "<<ele<<endl;
+                // cout<<mini<<" "<<arr[j]<<" "<<ele<<endl;
                 if(ele>mini&&ele<arr[j])return true;
             }
             
